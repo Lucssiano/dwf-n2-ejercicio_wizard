@@ -1,21 +1,25 @@
-export function initButtonComponent() {
-	class ButtonComponent extends HTMLElement {
-		constructor() {
-			super();
-			this.render();
+class ButtonComponent extends HTMLElement {
+	shadow = this.attachShadow({ mode: 'open' });
+
+	constructor() {
+		super();
+		this.render();
+	}
+
+	render() {
+		this.shadow.innerHTML = `
+		<button><custom-text variant="large">${this.textContent}</custom-text></button>
+		`;
+
+		const button = this.shadowRoot?.querySelector('button');
+		const buttonContent = button?.textContent;
+
+		if (button) {
+			buttonContent == 'Volver' ? (button.className = 'go-back-button') : (button.className = 'submit-button');
 		}
-		render() {
-			const shadow = this.attachShadow({ mode: 'open' });
 
-			const button = document.createElement('button');
-			this.textContent == 'Volver' ? (button.className = 'go-back-button') : (button.className = 'submit-button');
-
-			button.innerHTML = `
-					<custom-text variant="large">${this.textContent}</custom-text>
-			`;
-
-			const style = document.createElement('style');
-			style.textContent = `
+		const style = document.createElement('style');
+		style.textContent = `
 						* {
 							box-sizing: border-box;
 						}
@@ -29,15 +33,17 @@ export function initButtonComponent() {
 						}
 						.submit-button {
               background-color:#9CBBE9;			
+							margin-top: 20px;
+							font-family: 'Poppins', sans-serif;	
+							font-size: 18px;
+							font-weight: 500;
 						}
 						.go-back-button {
 							border: 2px solid #000;
 							background-color:#fff;			
 						}
 						`;
-			shadow.appendChild(style);
-			shadow.appendChild(button);
-		}
+		this.shadow.appendChild(style);
 	}
-	customElements.define('custom-button', ButtonComponent);
 }
+customElements.define('custom-button', ButtonComponent);

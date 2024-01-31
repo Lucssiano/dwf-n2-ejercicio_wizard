@@ -11,17 +11,24 @@ export function welcomePage(params) {
           <custom-text variant="large" class="large-title">Para continuar ingresá tu nombre</custom-text>
          </div>
          <div class="fieldset-container">  
-          <custom-fieldset label="Nombre" inputId="name" inputPlaceholder="Ingresá tu nombre"}></custom-fieldset>
-         </div>
+          <custom-fieldset label="Nombre" inputId="name" inputPlaceholder="Ingresá tu nombre"></custom-fieldset>
+	  <custom-button>Comenzar</custom-button> 
+          </div>
         </div>
         <custom-footer></custom-footer>
         `;
-	const formEl = div.querySelector('custom-fieldset')?.shadowRoot?.querySelector("form");
+
+	/* CREO QUE HABRIA QUE HACER LOS FORMS EN CADA PÁGINA PORQUE UN FORMULARIO TIENE UN SOLO INPUT Y LOS OTROS TIENEN MÁS DE UN INPUT */
+	const formEl = div.querySelector('custom-fieldset')?.shadowRoot?.querySelector('form');
 	formEl?.addEventListener('submit', (e) => {
 		e.preventDefault();
-		// const form = e.target as HTMLFormElement;
-		// console.log(form.name.valueOf); // me ofrece value of aunque siempre usamos value
-                params.goTo("/form");
+		params.goTo('/form');
 	});
+
+	/* EL BOTON NO ME LO TOMA COMO UN SUBMIT */
+	// const formButtonEl = formEl?.querySelector('custom-button')?.shadowRoot?.querySelector('button');
+	// formButtonEl?.addEventListener('click', () => {
+	// 	params.goTo('/form');
+	// });
 	return div;
 }

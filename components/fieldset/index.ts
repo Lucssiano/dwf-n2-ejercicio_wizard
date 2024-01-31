@@ -2,10 +2,16 @@ import { state } from '../../src/state';
 
 class FieldsetComponent extends HTMLElement {
 	shadow = this.attachShadow({ mode: 'open' });
+	// name: string; // Marce lo pone, pero en realidad no todos los fieldset tienen nombre
 
 	constructor() {
 		super();
 		this.render();
+		// this.name = state.getState().name;
+		// state.subscribe(() => {
+		// 	this.name = state.getState().name;
+		//  this.render();
+		// });
 	}
 
 	render() {
@@ -21,9 +27,9 @@ class FieldsetComponent extends HTMLElement {
 						<custom-text>${label}</custom-text>
 					</label>
 					<input class="input" id=${inputId} type=${inputType} placeholder=${inputPlaceholder} name="text" required>
-	  			<button class="submit-button">Comenzar</button>
 				</form>
 					`;
+		/* Cómo hago para usar el custom-button? No me lo toma para el form */
 
 		const formEl = this.shadow.querySelector('.welcome-form');
 		formEl?.addEventListener('submit', (e: Event) => {
@@ -32,9 +38,8 @@ class FieldsetComponent extends HTMLElement {
 			const inputTextValue = form.text.value;
 			state.setState({
 				...state.getState(),
-				nombre: inputTextValue,
+				name: inputTextValue,
 			});
-			// params?.goTo('/form');
 		});
 
 		const style = document.createElement('style');
@@ -53,19 +58,7 @@ class FieldsetComponent extends HTMLElement {
 						.input::placeholder{
 							color: #ccc;
 						}
-						.submit-button {
-							cursor: pointer;
-              border: none;
-							border-radius: 4px;
-              padding: 15px 0;		
-              text-align: center;		
-              width: 100%;
-							margin-top: 20px;
-              background-color:#9CBBE9;		
-							font-family: 'Poppins', sans-serif;	
-							font-size: 18px;
-							font-weight: 500;
-						}
+						
 						`;
 		this.shadow.appendChild(style);
 	}

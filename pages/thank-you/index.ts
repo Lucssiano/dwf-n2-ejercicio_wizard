@@ -7,7 +7,10 @@ export function thankYouPage(params) {
         <div class="large-title-container my-25">  
           <custom-text variant="large" class="large-title">Toda la información que nos brindaste es muy importante</custom-text>
         </div>
-        <custom-button class="submit-button">De nada</custom-button>
+        <div class="body-text-container">  
+          <custom-text>Datos recopilados:</custom-text>
+        </div>
+        <custom-button class="submit-button">Volver al inicio</custom-button>
     </div>
     <custom-footer></custom-footer>
         `;

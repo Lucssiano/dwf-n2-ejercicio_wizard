@@ -1,19 +1,20 @@
 export const state = {
 	data: {
-		nombre: 'default',
+		name: '',
+		email: '',
+		favFood: '',
+		optionSelected: '',
 	},
-	listeners: [], // los callbacks
+	listeners: [],
 	getState() {
 		return this.data;
 	},
 	setState(newState) {
-		// modifica this.data (el state) e invoca los callbacks
 		this.data = newState;
-		this.listeners.forEach((callback) => callback()); // no se si es necesario el parametro newState en el callback
+		this.listeners.forEach((callback) => callback());
+		console.log('nueva data', this.data);
 	},
 	subscribe(callback: (any) => any) {
-		// recibe callbacks para ser avisados posteriormente
 		this.listeners.push(callback);
-		/* Se está ejecutando una vez sola (?) */
 	},
 };
