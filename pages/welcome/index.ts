@@ -16,12 +16,12 @@ export function welcomePage(params) {
         </div>
         <custom-footer></custom-footer>
         `;
-	// const formEl = div.querySelector('.submit-button');
-	// console.log(formEl);
-	// formEl?.addEventListener('click', (e) => {
-	// 	e.preventDefault();
-	// 	const form = e.target as HTMLFormElement;
-	// 	console.log(form.name.value);
-	// });
+	const formEl = div.querySelector('custom-fieldset')?.shadowRoot?.querySelector("form");
+	formEl?.addEventListener('submit', (e) => {
+		e.preventDefault();
+		// const form = e.target as HTMLFormElement;
+		// console.log(form.name.valueOf); // me ofrece value of aunque siempre usamos value
+                params.goTo("/form");
+	});
 	return div;
 }
