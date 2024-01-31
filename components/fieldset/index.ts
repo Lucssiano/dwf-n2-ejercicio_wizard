@@ -30,7 +30,9 @@ class FieldsetComponent extends HTMLElement {
 				</form>
 					`;
 		/* Cómo hago para usar el custom-button? No me lo toma para el form */
+		/* Si quiero hacer un form distinto no puedo porque ya tiene esta estructura */
 
+		/* Dependiendo de la page el formulario tiene más o menos datos, entonces no se si tendria que dejarlo acá o en la page */
 		const formEl = this.shadow.querySelector('.welcome-form');
 		formEl?.addEventListener('submit', (e: Event) => {
 			e.preventDefault();
