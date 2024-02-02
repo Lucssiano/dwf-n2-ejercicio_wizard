@@ -2,6 +2,7 @@ import { welcomePage } from '../pages/welcome';
 import { formPage } from '../pages/form';
 import { thankYouPage } from '../pages/thank-you';
 
+/* Tengo que ver como poner las rutas para que se pueda usar en "produccion" */
 const routes = [
 	{
 		path: /\/welcome/,

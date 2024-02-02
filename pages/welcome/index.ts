@@ -10,25 +10,27 @@ export function welcomePage(params) {
          <div class="large-title-container">  
           <custom-text variant="large" class="large-title">Para continuar ingresá tu nombre</custom-text>
          </div>
-         <div class="fieldset-container">  
+         <div class="fieldset-container">
           <custom-fieldset label="Nombre" inputId="name" inputPlaceholder="Ingresá tu nombre"></custom-fieldset>
 	  <custom-button>Comenzar</custom-button> 
-          </div>
+         </div>
         </div>
         <custom-footer></custom-footer>
         `;
 
-	/* CREO QUE HABRIA QUE HACER LOS FORMS EN CADA PÁGINA PORQUE UN FORMULARIO TIENE UN SOLO INPUT Y LOS OTROS TIENEN MÁS DE UN INPUT */
+	/* DE ESTA MANERA EL FORMULARIO SOLO SE PUEDE ENVIAR DANDO ENTER EN EL INPUT, EL FORM NO SE PUEDE ENVIAR CON EL BOTON */
 	const formEl = div.querySelector('custom-fieldset')?.shadowRoot?.querySelector('form');
+
+	/* Solución para el boton pero que no chequea si el input está completado */
+	// const shadowButtonEl = div.querySelector('custom-button')?.shadowRoot?.querySelector('button');
+
+	// shadowButtonEl?.addEventListener('click', () => {
+	// 	formEl?.dispatchEvent(new Event('submit'));
+	// });
+
 	formEl?.addEventListener('submit', (e) => {
 		e.preventDefault();
 		params.goTo('/form');
 	});
-
-	/* EL BOTON NO ME LO TOMA COMO UN SUBMIT */
-	// const formButtonEl = formEl?.querySelector('custom-button')?.shadowRoot?.querySelector('button');
-	// formButtonEl?.addEventListener('click', () => {
-	// 	params.goTo('/form');
-	// });
 	return div;
 }

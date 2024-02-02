@@ -5,7 +5,7 @@
   "source": "./src/index.html",
   "scripts": {
     "dev": "parcel",
-    "build": "parcel build --dist-dir build",
+    "build": "parcel build --dist-dir build --public-url /dwf-n2-ejercicio_wizard",
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {

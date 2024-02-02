@@ -2,16 +2,10 @@ import { state } from '../../src/state';
 
 class FieldsetComponent extends HTMLElement {
 	shadow = this.attachShadow({ mode: 'open' });
-	// name: string; // Marce lo pone, pero en realidad no todos los fieldset tienen nombre
 
 	constructor() {
 		super();
 		this.render();
-		// this.name = state.getState().name;
-		// state.subscribe(() => {
-		// 	this.name = state.getState().name;
-		//  this.render();
-		// });
 	}
 
 	render() {
@@ -29,11 +23,11 @@ class FieldsetComponent extends HTMLElement {
 					<input class="input" id=${inputId} type=${inputType} placeholder=${inputPlaceholder} name="text" required>
 				</form>
 					`;
-		/* Cómo hago para usar el custom-button? No me lo toma para el form */
-		/* Si quiero hacer un form distinto no puedo porque ya tiene esta estructura */
 
-		/* Dependiendo de la page el formulario tiene más o menos datos, entonces no se si tendria que dejarlo acá o en la page */
+		/* Dependiendo de la page el formulario tiene más o menos datos, tienen que ser forms distintos porque guardan distinta información también */
+		/* El problema está en que si quiero reutilizar el fieldset, no se cómo hacer que espere a que todos los inputs esten completados y recien ahí se pueda mandar el form */
 		const formEl = this.shadow.querySelector('.welcome-form');
+
 		formEl?.addEventListener('submit', (e: Event) => {
 			e.preventDefault();
 			const form = e.target as HTMLFormElement;
