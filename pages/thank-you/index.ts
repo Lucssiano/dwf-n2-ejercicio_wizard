@@ -10,11 +10,13 @@ export function thankYouPage(params) {
         <div class="body-text-container">  
           <custom-text>Datos recopilados:</custom-text>
         </div>
-        <custom-button class="submit-button">Volver al inicio</custom-button>
+        <return-button class="submit-button">Volver al inicio</return-button>
     </div>
     <custom-footer></custom-footer>
         `;
-	const submitButton = div.querySelector('.submit-button');
-	submitButton?.addEventListener('click', () => params.goTo('/welcome'));
+
+	const goBackButton = div.querySelector('return-button')?.shadowRoot?.querySelector('button');
+	goBackButton?.addEventListener('click', () => params.goTo('/welcome'));
+
 	return div;
 }

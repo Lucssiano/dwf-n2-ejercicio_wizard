@@ -18,7 +18,7 @@ class GreetingComponent extends HTMLElement {
 
 	render() {
 		this.shadow.innerHTML = `
-        <custom-text variant="title">Hola ${state.getState().name}</custom-text>
+        <custom-text variant="title">Hola ${this.greeting}</custom-text>
     `;
 
 		const style = document.createElement('style');

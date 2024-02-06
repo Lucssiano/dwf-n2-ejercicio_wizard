@@ -11,22 +11,14 @@ export function welcomePage(params) {
           <custom-text variant="large" class="large-title">Para continuar ingresá tu nombre</custom-text>
          </div>
          <div class="fieldset-container">
-          <custom-fieldset label="Nombre" inputId="name" inputPlaceholder="Ingresá tu nombre"></custom-fieldset>
-	  <custom-button>Comenzar</custom-button> 
+           <welcome-form class="welcome-form"></welcome-form>
          </div>
         </div>
         <custom-footer></custom-footer>
         `;
 
-	/* DE ESTA MANERA EL FORMULARIO SOLO SE PUEDE ENVIAR DANDO ENTER EN EL INPUT, EL FORM NO SE PUEDE ENVIAR CON EL BOTON */
-	const formEl = div.querySelector('custom-fieldset')?.shadowRoot?.querySelector('form');
-
-	/* Solución para el boton pero que no chequea si el input está completado */
-	// const shadowButtonEl = div.querySelector('custom-button')?.shadowRoot?.querySelector('button');
-
-	// shadowButtonEl?.addEventListener('click', () => {
-	// 	formEl?.dispatchEvent(new Event('submit'));
-	// });
+	const welcomeForm = div.querySelector('welcome-form');
+	const formEl = welcomeForm?.shadowRoot?.querySelector('form');
 
 	formEl?.addEventListener('submit', (e) => {
 		e.preventDefault();
