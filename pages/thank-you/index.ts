@@ -8,7 +8,7 @@ export function thankYouPage(params) {
           <custom-text variant="large" class="large-title">Toda la información que nos brindaste es muy importante</custom-text>
         </div>
         <div class="body-text-container">  
-          <custom-text>Datos recopilados:</custom-text>
+          <custom-text variant="large">Datos recopilados:</custom-text>
           <state-info></state-info>
         </div>
         <return-button class="submit-button">Volver al inicio</return-button>

@@ -12,7 +12,6 @@ export const state = {
 	setState(newState) {
 		this.data = newState;
 		this.listeners.forEach((callback) => callback());
-		console.log('nueva data', this.data);
 	},
 	subscribe(callback: (any) => any) {
 		this.listeners.push(callback);

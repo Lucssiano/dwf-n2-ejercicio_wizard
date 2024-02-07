@@ -2,7 +2,7 @@ import { state } from '../../src/state';
 
 class StateInfoComponent extends HTMLElement {
 	shadow = this.attachShadow({ mode: 'open' });
-	// greeting: string;
+	stateObject: any = state.getState();
 
 	constructor() {
 		super();
@@ -12,21 +12,15 @@ class StateInfoComponent extends HTMLElement {
 
 	syncWithState() {
 		const lastState = state.getState();
-		// this.greeting = lastState.name;
-		// this.render();
+		this.stateObject = lastState;
+		this.render();
 	}
 
 	render() {
-		this.shadow.innerHTML = `
-            <></>
-        `;
-
-		const style = document.createElement('style');
-		style.textContent = `
-						
-						`;
-
-		this.shadow.appendChild(style);
+		for (const key in this.stateObject) {
+			const element = this.stateObject[key];
+			this.shadow.innerHTML += `<custom-text class="state-key">${key}: ${element}</custom-text>`;
+		}
 	}
 }
 customElements.define('state-info', StateInfoComponent);
