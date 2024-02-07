@@ -9,6 +9,7 @@ export function thankYouPage(params) {
         </div>
         <div class="body-text-container">  
           <custom-text>Datos recopilados:</custom-text>
+          <state-info></state-info>
         </div>
         <return-button class="submit-button">Volver al inicio</return-button>
     </div>

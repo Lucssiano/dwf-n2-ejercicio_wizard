@@ -10,10 +10,10 @@ class greetingFormComponent extends HTMLElement {
 
 	render() {
 		this.shadow.innerHTML = `
-					<form class="welcome-form">
+					<form class="greeting-form">
             <div class="fieldset-container">
               <label for="email">
-                <custom-text>Nombre</custom-text>
+                <custom-text>Email</custom-text>
               </label>
               <input class="input" id="email" type="email" name="email" required>
             </div>
@@ -36,32 +36,34 @@ class greetingFormComponent extends HTMLElement {
               </select>
             </div>
 
-            <button class="submit-button"><custom-text variant="large">Comenzar</custom-text></button>
+            <button class="submit-button"><custom-text variant="large">Continuar</custom-text></button>
           </form>
   				`;
 
 		/* Dependiendo de la page el formulario tiene más o menos datos, tienen que ser forms distintos porque guardan distinta información también */
 		/* El problema está en que si quiero reutilizar el fieldset, no se cómo hacer que espere a que todos los inputs esten completados y recien ahí se pueda mandar el form */
-		// const formEl = this.shadow.querySelector('.welcome-form');
+		const formEl = this.shadow.querySelector('.greeting-form');
 
-		// formEl?.addEventListener('submit', (e: Event) => {
-		// 	e.preventDefault();
-		// 	const form = e.target as HTMLFormElement;
-		// 	const inputTextValue = form.text.value;
-		// 	state.setState({
-		// 		...state.getState(),
-		// 		name: inputTextValue,
-		// 	});
-		// });
-
-		/* FALTA HACER ESTO */
+		formEl?.addEventListener('submit', (e: Event) => {
+			e.preventDefault();
+			const form = e.target as HTMLFormElement;
+			const inputMailValue = form.email.value;
+      const inputFavFoodValue = form.favFood.value;
+      const optionSelected = form.options.value
+			state.setState({
+				...state.getState(),
+        email: inputMailValue,
+        favFood: inputFavFoodValue,
+        optionSelected: optionSelected,
+			});
+		});
 
 		const style = document.createElement('style');
 		style.textContent = `
               * {
                 box-sizing: border-box;
               }
-              .welcome-form {
+              .greeting-form {
                 margin: 10px 0;
                 display: flex;
                 flex-direction: column;
