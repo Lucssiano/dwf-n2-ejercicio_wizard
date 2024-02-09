@@ -22,7 +22,8 @@ export function welcomePage(params) {
 
 	formEl?.addEventListener('submit', (e) => {
 		e.preventDefault();
-		params.goTo('/form');
+		// params.goTo('/form');
+		params.goTo('/dwf-n2-ejercicio_wizard/form');
 	});
 	return div;
 }

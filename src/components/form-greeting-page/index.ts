@@ -1,4 +1,4 @@
-import { state } from '../../src/state';
+import { state } from '../../state';
 
 class greetingFormComponent extends HTMLElement {
 	shadow = this.attachShadow({ mode: 'open' });
@@ -48,13 +48,13 @@ class greetingFormComponent extends HTMLElement {
 			e.preventDefault();
 			const form = e.target as HTMLFormElement;
 			const inputMailValue = form.email.value;
-      const inputFavFoodValue = form.favFood.value;
-      const optionSelected = form.options.value
+			const inputFavFoodValue = form.favFood.value;
+			const optionSelected = form.options.value;
 			state.setState({
 				...state.getState(),
-        email: inputMailValue,
-        favFood: inputFavFoodValue,
-        optionSelected: optionSelected,
+				email: inputMailValue,
+				favFood: inputFavFoodValue,
+				optionSelected: optionSelected,
 			});
 		});
 

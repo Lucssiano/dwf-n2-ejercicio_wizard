@@ -17,7 +17,8 @@ export function formPage(params) {
 
 	formEl?.addEventListener('submit', (e) => {
 		e.preventDefault();
-		params.goTo('/thankyou');
+		// params.goTo('/thankyou');
+		params.goTo('/dwf-n2-ejercicio_wizard/thankyou');
 	});
 
 	const goBackButton = div.querySelector('return-button')?.shadowRoot?.querySelector('button');

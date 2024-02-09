@@ -1,19 +1,24 @@
-import { welcomePage } from '../pages/welcome';
-import { formPage } from '../pages/form';
-import { thankYouPage } from '../pages/thank-you';
+import { welcomePage } from './pages/welcome';
+import { formPage } from './pages/form';
+import { thankYouPage } from './pages/thank-you';
+
+/* Agregar lo de BASE PATH que me dijo fache */
 
 /* Tengo que ver como poner las rutas para que se pueda usar en "produccion" */
 const routes = [
 	{
-		path: /\/welcome/,
+		path: /\/dwf-n2-ejercicio_wizard\/welcome/,
+		/* /\/welcome/ */
 		component: welcomePage,
 	},
 	{
-		path: /\/form/,
+		path: /\/dwf-n2-ejercicio_wizard\/form/,
+		/* /\/form/ */
 		component: formPage,
 	},
 	{
-		path: /\/thankyou/,
+		path: /\/dwf-n2-ejercicio_wizard\/thankyou/,
+		/* /\/thankyou/ */
 		component: thankYouPage,
 	},
 ];
@@ -34,8 +39,9 @@ export function initRouter(container: Element) {
 		}
 	}
 
-	if (location.pathname === '/') {
-		goTo('/welcome');
+	if (location.pathname === '/' || location.pathname === '/dwf-n2-ejercicio_wizard/') {
+		goTo('/dwf-n2-ejercicio_wizard/welcome');
+		// goTo('/welcome');
 	} else handleRoute(location.pathname);
 
 	window.onpopstate = () => handleRoute(location.pathname);

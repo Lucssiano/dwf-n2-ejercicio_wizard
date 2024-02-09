@@ -17,7 +17,10 @@ export function thankYouPage(params) {
         `;
 
 	const goBackButton = div.querySelector('return-button')?.shadowRoot?.querySelector('button');
-	goBackButton?.addEventListener('click', () => params.goTo('/welcome'));
+	goBackButton?.addEventListener(
+		'click',
+		() => params.goTo('/dwf-n2-ejercicio_wizard/welcome') /* params.goTo('/welcome') */,
+	);
 
 	return div;
 }

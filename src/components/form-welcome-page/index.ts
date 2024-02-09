@@ -1,4 +1,4 @@
-import { state } from '../../src/state';
+import { state } from '../../state';
 
 class welcomeFormComponent extends HTMLElement {
 	shadow = this.attachShadow({ mode: 'open' });
